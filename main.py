@@ -32,9 +32,3 @@ class person:
             self.byear = value
         else:
             print("Invalid age")
-    @property
-    def bdate(self):
-        return self.__bdate
-    @bdate.setter
-    def bdate(self, value):
-        self.bdate = '{}.{}.{}'.format(self.byear, self.bmonth, self.bday)
