@@ -2,7 +2,7 @@ import datetime
 #baraye zaman va tarikhe daqiq
 today_date = datetime.date.today()
 class person:
-    #az in class baraye taerif forooshande va moshtari estefadeh mikonim
+    #az in class baray taerif forooshande va moshtari estefadeh mikonim
     def __init__(self, fname, lname, ncode, bday, bmonth, byear, email, password, phnum, cellnum, address):
         self.fname = fname
         #first name
