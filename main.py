@@ -41,3 +41,19 @@ class person:
             raise ValueError
         self.__cellnum = cellnum
         #shomare mobile
+
+        class kala:
+            # in class baraye estefade dar foroshgah va safhe sefareshat ast
+            def __init__(self, kalname, kalprice, kalcode, kalline, kalscore, kalstock):
+                self.kalname = kalname
+                # name kala
+                self.kalprice = kalprice
+                # gheymat kala
+                self.kalcode = kalcode
+                # code kala dar foroshgah
+                self.kalline = kalline
+                # noe kala (dar dastebandi mahsolat)
+                self.kalscore = kalscore
+                # emteaz kala
+                self.kalstock = kalstock
+                # mojodi kala
