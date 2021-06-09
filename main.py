@@ -163,18 +163,35 @@ class seller(person):
 class kala:
     #in class baraye estefade dar foroshgah va safhe sefareshat ast
     def __init__(self , kalname , kalprice , kalcode , kalline , kalscore , kalstock):
-        self.kalname = kalname
+        self.__kalname = kalname
         #name kala
-        self.kalprice = kalprice
+        self.__kalprice = kalprice
         #gheymat kala
         self.__kalcode = 'pr' + str(kalcode).zfill(6)
         #code kala dar foroshgah
-        self.kalline = kalline
+        self.__kalline = kalline
         #noe kala (dar dastebandi mahsolat)
-        self.kalscore = kalscore
+        self.__kalscore = kalscore
         #emteaz kala
-        self.kalstock = kalstock
+        self.__kalstock = kalstock
         #mojodi kala
+
+
+    "kalname property"
+    @property
+    def name(self):
+        return self.__kalname
+    @name.setter
+    def name(self , kalname):
+        self.__kalname = kalname
+
+    "kalprice property"
+    @property
+    def price(self):
+        return self.__kalprice
+    @price.setter
+    def price(self , kalprice):
+        self.__kalprice = kalprice
 
     "kalcode property"
     @property
@@ -184,13 +201,26 @@ class kala:
     def code(self , kalcode):
        self.__kalcode = kalcode
 
-    def kal_name (self , new_name):
-        self.kalname = new_name
-    def kal_price (self , new_price):
-        self.kalprice = new_price
-    def kal_line (self , new_line):
-        self.kalline = new_line
-    def kal_score (self , new_score):
-        self.score = new_score
-    def kal_stock (self , new_stock):
-        self.kalstock = new_stock
+    "kalline property"
+    @property
+    def line(self):
+        return self.__kalline
+    @line.setter
+    def line(self , kalline):
+        self.__kalline = kalline
+
+    "kalscor property"
+    @property
+    def score(self):
+        return self.__kalscore
+    @score.setter
+    def score(self , kalscore):
+        self.__kalscore = kalscore
+
+    "kalstock property"
+    @property
+    def stock(self):
+        return self.__kalstock
+    @stock.setter
+    def stock(self , kalstock):
+        self.__kalstock = kalstock
