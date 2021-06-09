@@ -167,7 +167,7 @@ class kala:
         #name kala
         self.kalprice = kalprice
         #gheymat kala
-        self.__kalcode = 'pr' + str(kalcode) + zfill(6)
+        self.__kalcode = 'pr' + str(kalcode).zfill(6)
         #code kala dar foroshgah
         self.kalline = kalline
         #noe kala (dar dastebandi mahsolat)
@@ -179,10 +179,10 @@ class kala:
     "kalcode property"
     @property
     def code(self):
-        return self.__kalcode
+       return self.__kalcode
     @code.setter
     def code(self , kalcode):
-        self.__kalcode = kalcode
+       self.__kalcode = kalcode
 
     def kal_name (self , new_name):
         self.kalname = new_name
