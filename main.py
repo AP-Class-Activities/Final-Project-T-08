@@ -182,11 +182,15 @@ class kala:
         return self.__kalcode
     @code.setter
     def code(self , kalcode):
-        return self.__kalcode
+        self.__kalcode = kalcode
+
     def kal_name (self , new_name):
         self.kalname = new_name
     def kal_price (self , new_price):
         self.kalprice = new_price
+    def kal_line (self , new_line):
+        self.kalline = new_line
+    def kal_score (self , new_score):
+        self.score = new_score
     def kal_stock (self , new_stock):
         self.kalstock = new_stock
-
