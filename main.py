@@ -10,21 +10,22 @@ def num_counter(num):
 class person:
     #az in class baraye taerif forooshande va moshtari estefadeh mikonim
     def __init__(self, fname, lname, gender, ncode, bday, bmonth, byear, email, phnum, cellnum, address):
-        self.fname = fname
+        if fname.isalph() == False:
+            raise ValueError("your first name should not contain any number")
+        self.__fname = fname
         #first name
-        self.lname = lname
+        if lname.isalpha() == False:
+            raise ValueError("your last name should not contain any number")
+        self.__lname = lname
         #last name
-        self.ncode = ncode
-        #code melli
-        self.email = email
-        self.phnum = phnum
-        #telephon sabet
-        self.address = address
-
         if gender not in ['male', 'female', 'else', 'prefer not to say']:
             raise ValueError("you have entered an invalid gender")
         self.__gender = gender
         #jensiyat fard
+        if ncode.isdecimal() == False:
+            raise ValueError("national code should only contain numbers")
+        self.__ncode = ncode
+        #code melli
         if int(bday) < 1 or int(bday) > 31:
             raise ValueError("invalid day")
         self.__bday = bday
@@ -37,10 +38,20 @@ class person:
             raise ValueError("the age you entered is not valid")
         self.__byear = byear
         #sale tavalod
-        if num_counter(int(cellnum)) != 11:
-            raise ValueError
+        if '@' in email == False:
+            raise ValueError("invalid email")
+        self.__email = email
+        #email
+        if num_counter((int(phnum))) != 11 and phnum[0] !='0':
+            raise ValueError("invalid number")
+        self.__phnum = phnum
+        #shomare telephone sabet
+        if num_counter(int(cellnum)) != 11 and cellnum[0] != '0' and cellnum[1] != '9':
+            raise ValueError("invalid number")
         self.__cellnum = cellnum
         #shomare mobile
+        self.address = address
+        #adrese manzel ya mahale kar
 
         
 class seller(person):
