@@ -10,9 +10,9 @@ def num_counter(num):
 class person:
     #az in class baraye taerif forooshande va moshtari estefadeh mikonim
     def __init__(self, fname, lname, gender, ncode, bday, bmonth, byear, username, password, email, phnum, cellnum, address):
-        if fname.isalph() == False:
-            raise ValueError("your first name should not contain any number")
         # first name
+        if fname.isalpha() == False:
+            raise ValueError("your first name should not contain any number")
         self.__fname = fname
         # last name
         if lname.isalpha() == False:
@@ -57,6 +57,99 @@ class person:
         self.__cellnum = cellnum
         # adrese manzel ya mahale kar
         self.__address = address
+
+    #setters and getters
+    # fname
+    @property
+    def fname(self):
+        return self.__fname.title()
+    @fname.setter
+    def fname(self, value):
+        self.__fname = value
+    # lname
+    @property
+    def lname(self):
+        return self.__lname.title()
+    @lname.setter
+    def lname(self, value):
+        self.__lname = value
+    # gender
+    @property
+    def gender(self):
+        return self.__gender
+    @gender.setter
+    def gender(self, value):
+        self.__gender = value
+    # ncode
+    @property
+    def ncode(self):
+        return self.__ncode
+    @ncode.setter
+    def ncode(self, value):
+        self.__ncode = value
+    # bday
+    @property
+    def bday(self):
+        return self.__bday
+    @bday.setter
+    def bday(self, value):
+        self.__bday = value
+    # bmonth
+    @property
+    def bmonth(self):
+        return self.__bmonth
+    @bmonth.setter
+    def bmonth(self, value):
+        self.__bmonth = value
+    # byear
+    @property
+    def byear(self):
+        return self.__byear
+    @byear.setter
+    def byear(self, value):
+        self.__byear = value
+    #username
+    @property
+    def username(self):
+        return self.__username
+    @username.setter
+    def username(self, value):
+        self.__username = value
+    #password
+    @property
+    def password(self):
+        return self.__password
+    @password.setter
+    def password(self, value):
+        self.__password = value
+    #email
+    @property
+    def email(self):
+        return self.__email
+    @email.setter
+    def email(self, value):
+        self.__email = value
+    #phnum
+    @property
+    def phnum(self):
+        return self.__phnum
+    @phnum.setter
+    def phnum(self, value):
+        self.__phnum = value
+    #cellnum
+    @property
+    def cellnum(self):
+        return self.__cellnum
+    @cellnum.setter
+    def cellnum(self, value):
+        self.__cellnum = value
+    #address
+    @property
+    def address(self):
+        return self.__address
+    @address.setter
+    def address(self, value):
+        self.__address = value
         
 class seller(person):
     #Az in class baraye forooshandeh estefade mikonim
