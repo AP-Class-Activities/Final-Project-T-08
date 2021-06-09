@@ -42,6 +42,16 @@ class person:
         self.__cellnum = cellnum
         #shomare mobile
 
+        
+class seller(person):
+    #Az in class baraye forooshandeh estefade mikonim
+    def __init__(self, fname, lname, gender, ncode, bday, bmonth, byear, email, phnum, cellnum, address, id, wallet = None):
+        super(seller, self).__init__(fname, lname, gender, ncode, bday, bmonth, byear, email, phnum, cellnum, address)
+        self.id = id
+        #id forooshandeh
+        self.wallet = wallet
+        #kif pool frooshandeh
+
         class kala:
             # in class baraye estefade dar foroshgah va safhe sefareshat ast
             def __init__(self, kalname, kalprice, kalcode, kalline, kalscore, kalstock):
