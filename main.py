@@ -9,50 +9,54 @@ def num_counter(num):
     return i
 class person:
     #az in class baraye taerif forooshande va moshtari estefadeh mikonim
-    def __init__(self, fname, lname, gender, ncode, bday, bmonth, byear, email, phnum, cellnum, address):
+    def __init__(self, fname, lname, gender, ncode, bday, bmonth, byear, username, password, email, phnum, cellnum, address):
         if fname.isalph() == False:
             raise ValueError("your first name should not contain any number")
+        # first name
         self.__fname = fname
-        #first name
+        # last name
         if lname.isalpha() == False:
             raise ValueError("your last name should not contain any number")
         self.__lname = lname
-        #last name
+        # jensiyat fard
         if gender not in ['male', 'female', 'else', 'prefer not to say']:
             raise ValueError("you have entered an invalid gender")
         self.__gender = gender
-        #jensiyat fard
+        # code melli
         if ncode.isdecimal() == False:
             raise ValueError("national code should only contain numbers")
         self.__ncode = ncode
-        #code melli
+        # rooze tavalod (ba tarikh tavalod eshtebah nashavad)
         if int(bday) < 1 or int(bday) > 31:
             raise ValueError("invalid day")
         self.__bday = bday
-        #rooze tavalod (ba tarikh tavalod eshtebah nashavad)
+        # mahe tavalod
         if int(bmonth) < 1 or int(bmonth) > 12:
             raise ValueError("invalid month")
         self.__bmonth = bmonth
-        #mahe tavalod
+        # sale tavalod
         if int(byear) > int(today_date.year) or int(byear) < 1900:
             raise ValueError("the age you entered is not valid")
         self.__byear = byear
-        #sale tavalod
+        #name karbari
+        #bayad dar file check shavad ke tadakhol nadashteh bashad
+        self.__username = username
+        #password
+        self.__password = password
+        # email
         if '@' in email == False:
             raise ValueError("invalid email")
         self.__email = email
-        #email
+        # shomare telephone sabet
         if num_counter((int(phnum))) != 11 and phnum[0] !='0':
             raise ValueError("invalid number")
         self.__phnum = phnum
-        #shomare telephone sabet
+        # shomare mobile
         if num_counter(int(cellnum)) != 11 and cellnum[0] != '0' and cellnum[1] != '9':
             raise ValueError("invalid number")
         self.__cellnum = cellnum
-        #shomare mobile
-        self.address = address
-        #adrese manzel ya mahale kar
-
+        # adrese manzel ya mahale kar
+        self.__address = address
         
 class seller(person):
     #Az in class baraye forooshandeh estefade mikonim
