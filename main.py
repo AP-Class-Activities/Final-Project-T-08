@@ -176,7 +176,8 @@ class kala:
         self.__kalstock = kalstock
         #mojodi kala
 
-
+    #setter and getter
+    #kalname
     "kalname property"
     @property
     def name(self):
@@ -185,6 +186,7 @@ class kala:
     def name(self , kalname):
         self.__kalname = kalname
 
+    #kalprice
     "kalprice property"
     @property
     def price(self):
@@ -193,6 +195,7 @@ class kala:
     def price(self , kalprice):
         self.__kalprice = kalprice
 
+    #kalcode
     "kalcode property"
     @property
     def code(self):
@@ -201,6 +204,7 @@ class kala:
     def code(self , kalcode):
        self.__kalcode = kalcode
 
+    #kalline
     "kalline property"
     @property
     def line(self):
@@ -209,6 +213,7 @@ class kala:
     def line(self , kalline):
         self.__kalline = kalline
 
+    #kalscor
     "kalscor property"
     @property
     def score(self):
@@ -217,6 +222,7 @@ class kala:
     def score(self , kalscore):
         self.__kalscore = kalscore
 
+    #kalstock
     "kalstock property"
     @property
     def stock(self):
@@ -224,3 +230,46 @@ class kala:
     @stock.setter
     def stock(self , kalstock):
         self.__kalstock = kalstock
+
+
+
+class operatur:
+    def __init__(self ,opname , oppass , opcell ):
+        self.__opname = 'op'+str(opname).zfill(6)
+        #username opratur
+        self.__oppass = oppass
+        #password operatur
+        self.__opcell = opcell
+        #shomare operatur
+
+    #setter and getter
+    #opname
+    "opname property"
+    @property
+    def pname(self):
+        return self.__opname
+    @pname.setter
+    def pname(self , opname):
+        self.opname = opname
+
+
+    #oppass
+    "oppass property"
+    @property
+    def ppass(self):
+        return self.__oppass
+    @ppass.setter
+    def ppass(self , oppass):
+        self.__oppass = oppass
+
+
+    #opcell
+    "opcel property"
+    @property
+    def pcell(self):
+        return self.__opcell
+    @pcell.setter
+    def pcell(self , opcell):
+        self.__opcell = opcell
+
+
