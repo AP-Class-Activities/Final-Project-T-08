@@ -160,18 +160,33 @@ class seller(person):
         self.wallet = wallet
         #kif pool frooshandeh
 
-        class kala:
-            # in class baraye estefade dar foroshgah va safhe sefareshat ast
-            def __init__(self, kalname, kalprice, kalcode, kalline, kalscore, kalstock):
-                self.kalname = kalname
-                # name kala
-                self.kalprice = kalprice
-                # gheymat kala
-                self.kalcode = kalcode
-                # code kala dar foroshgah
-                self.kalline = kalline
-                # noe kala (dar dastebandi mahsolat)
-                self.kalscore = kalscore
-                # emteaz kala
-                self.kalstock = kalstock
-                # mojodi kala
+class kala:
+    #in class baraye estefade dar foroshgah va safhe sefareshat ast
+    def __init__(self , kalname , kalprice , kalcode , kalline , kalscore , kalstock):
+        self.kalname = kalname
+        #name kala
+        self.kalprice = kalprice
+        #gheymat kala
+        self.__kalcode = 'pr' + str(kalcode) + zfill(6)
+        #code kala dar foroshgah
+        self.kalline = kalline
+        #noe kala (dar dastebandi mahsolat)
+        self.kalscore = kalscore
+        #emteaz kala
+        self.kalstock = kalstock
+        #mojodi kala
+
+    "kalcode property"
+    @property
+    def code(self):
+        return self.__kalcode
+    @code.setter
+    def code(self , kalcode):
+        return self.__kalcode
+    def kal_name (self , new_name):
+        self.kalname = new_name
+    def kal_price (self , new_price):
+        self.kalprice = new_price
+    def kal_stock (self , new_stock):
+        self.kalstock = new_stock
+
