@@ -1,8 +1,8 @@
 import datetime
-#baraye zaman va tarikhe daqiq
+# baraye zaman va tarikhe daqiq
 today_date = datetime.date.today()
 class person:
-    #az in class baraye taerif forooshande va moshtari estefadeh mikonim
+    # Az in class baraye taerif forooshande va moshtari estefadeh mikonim
     def __init__(self, fname, lname, gender, ncode, bday, bmonth, byear, username, password, email, phnum, cellnum,
                  address):
         # first name
@@ -33,10 +33,10 @@ class person:
         if int(byear) > int(today_date.year) or int(byear) < 1900:
             raise ValueError("the age you entered is not valid")
         self.__byear = byear
-        #name karbari
-        #bayad dar file check shavad ke tadakhol nadashteh bashad
+        # name karbari
+        # bayad dar file check shavad ke tadakhol nadashteh bashad
         self.__username = username
-        #password
+        # password
         if password.isalpha() == True or password.isdecimal() == True or password.lower() == password or\
                 password.upper() == password or len(password) < 8:
             raise ValueError("your password should be a combination of 8 or more capital and small alphabet characters"
@@ -47,7 +47,7 @@ class person:
             raise ValueError("invalid email")
         self.__email = email
         # shomare telephone sabet
-        if len(phnum) != 11 or phnum[0] !='0':
+        if len(phnum) != 11 or phnum[0] != '0':
             raise ValueError("invalid number")
         self.__phnum = phnum
         # shomare mobile
@@ -57,7 +57,7 @@ class person:
         # adrese manzel ya mahale kar
         self.__address = address
 
-    #setters and getters
+    # setters and getters
     # fname
     @property
     def fname(self):
@@ -150,34 +150,89 @@ class person:
     def address(self, value):
         self.__address = value
 
+class client(person):
+    # Az in class baraye moshtari estefadeh mikonim
+    def __init__(self, fname, lname, gender, ncode, bday, bmonth, byear, username, password, email, phnum, cellnum,
+                 address, id, wallet = 0, fav_list = [], sh_list = [], d_sh_list = []):
+        super(client,self).__init__(fname, lname, gender, ncode, bday, bmonth, byear, username, password, email, phnum,\
+        cellnum, address)
+        # id moshtari
+        self.__id = 'CU' + id.zfill(6)
+        # kife pool
+        self.__wallet = wallet
+        # liste kala haye morede alaqe
+        self.__fav_list = fav_list
+        # list kharid haye dar hale anjam
+        self.__sh_list = sh_list
+        # list kharid haye anjam shodeh
+        self.__d_sh_list = d_sh_list
+
+    # setters and getters
+    # id
+    @property
+    def id(self):
+        return self.__id
+    @id.setter
+    def id(self, value):
+        self.__id = value
+    # wallet
+    @property
+    def wallet(self):
+        return self.__wallet
+    @wallet.setter
+    def wallet(self, value):
+        self.__wallet = value
+    # fav_list
+    @property
+    def fav_list(self):
+        return self.__fav_list
+    @fav_list.setter
+    def fav_list(self, value):
+        self.__fav_list = value
+    # sh_list
+    @property
+    def sh_list(self):
+        return self.__sh_list
+    @sh_list.setter
+    def sh_list(self, value):
+        self.__sh_list = value
+    # d_sh_list
+    @property
+    def d_sh_list(self):
+        return self.__d_sh_list
+    @d_sh_list.setter
+    def d_sh_list(self, value):
+        self.__d_sh_list = value
+
         
 class seller(person):
-    #Az in class baraye forooshandeh estefade mikonim
+    # Az in class baraye forooshandeh estefade mikonim
     def __init__(self, fname, lname, gender, ncode, bday, bmonth, byear, email, phnum, cellnum, address, id, wallet = None):
         super(seller, self).__init__(fname, lname, gender, ncode, bday, bmonth, byear, email, phnum, cellnum, address)
         self.id = id
         #id forooshandeh
         self.wallet = wallet
-        #kif pool frooshandeh
+        # kif pool frooshandeh
 
 class kala:
-    #in class baraye estefade dar foroshgah va safhe sefareshat ast
-    def __init__(self , kalname , kalprice , kalcode , kalline , kalscore , kalstock):
+    # in class baraye estefade dar foroshgah va safhe sefareshat ast
+    def __init__(self ,kalname ,kalprice ,kalcode , kalline, kalscore, kalstock, comment = []):
         self.__kalname = kalname
-        #name kala
+        # name kala
         self.__kalprice = kalprice
-        #gheymat kala
-        self.__kalcode = 'pr' + str(kalcode).zfill(6)
-        #code kala dar foroshgah
+        # gheymat kala
+        self.__kalcode = 'PR' + kalcode.zfill(6)
+        # code kala dar foroshgah
         self.__kalline = kalline
-        #noe kala (dar dastebandi mahsolat)
+        # noe kala (dar dastebandi mahsolat)
         self.__kalscore = kalscore
-        #emteaz kala
+        # emteaz kala
         self.__kalstock = kalstock
-        #mojodi kala
-
-    #setter and getter
-    #kalname
+        # mojodi kala
+        self.__comment = comment
+        # nazarate moshtariyan
+    # setter and getter
+    # kalname
     "kalname property"
     @property
     def name(self):
@@ -186,7 +241,7 @@ class kala:
     def name(self , kalname):
         self.__kalname = kalname
 
-    #kalprice
+    # kalprice
     "kalprice property"
     @property
     def price(self):
@@ -195,7 +250,7 @@ class kala:
     def price(self , kalprice):
         self.__kalprice = kalprice
 
-    #kalcode
+    # kalcode
     "kalcode property"
     @property
     def code(self):
@@ -204,7 +259,7 @@ class kala:
     def code(self , kalcode):
        self.__kalcode = kalcode
 
-    #kalline
+    # kalline
     "kalline property"
     @property
     def line(self):
@@ -213,7 +268,7 @@ class kala:
     def line(self , kalline):
         self.__kalline = kalline
 
-    #kalscor
+    # kalscor
     "kalscor property"
     @property
     def score(self):
@@ -222,7 +277,7 @@ class kala:
     def score(self , kalscore):
         self.__kalscore = kalscore
 
-    #kalstock
+    # kalstock
     "kalstock property"
     @property
     def stock(self):
@@ -230,20 +285,26 @@ class kala:
     @stock.setter
     def stock(self , kalstock):
         self.__kalstock = kalstock
-
+    # comment
+    @property
+    def comment(self):
+        return self.__comment
+    @comment.setter
+    def comment(self, value):
+        self.__comment = value
 
 
 class operatur:
     def __init__(self ,opname , oppass , opcell ):
         self.__opname = 'op'+str(opname).zfill(6)
-        #username opratur
+        # username opratur
         self.__oppass = oppass
-        #password operatur
+        # password operatur
         self.__opcell = opcell
         #shomare operatur
 
-    #setter and getter
-    #opname
+    # setter and getter
+    # opname
     "opname property"
     @property
     def pname(self):
@@ -253,7 +314,7 @@ class operatur:
         self.opname = opname
 
 
-    #oppass
+    # oppass
     "oppass property"
     @property
     def ppass(self):
@@ -263,7 +324,7 @@ class operatur:
         self.__oppass = oppass
 
 
-    #opcell
+    # opcell
     "opcel property"
     @property
     def pcell(self):
