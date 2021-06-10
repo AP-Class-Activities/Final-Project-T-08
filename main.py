@@ -1,15 +1,10 @@
 import datetime
 #baraye zaman va tarikhe daqiq
 today_date = datetime.date.today()
-def num_counter(num):
-    i = 0
-    while num > 0:
-        num = num // 10
-        i = i + 1
-    return i
 class person:
     #az in class baraye taerif forooshande va moshtari estefadeh mikonim
-    def __init__(self, fname, lname, gender, ncode, bday, bmonth, byear, username, password, email, phnum, cellnum, address):
+    def __init__(self, fname, lname, gender, ncode, bday, bmonth, byear, username, password, email, phnum, cellnum,
+                 address):
         # first name
         if fname.isalpha() == False:
             raise ValueError("your first name should not contain any number")
@@ -42,17 +37,21 @@ class person:
         #bayad dar file check shavad ke tadakhol nadashteh bashad
         self.__username = username
         #password
+        if password.isalpha() == True or password.isdecimal() == True or password.lower() == password or\
+                password.upper() == password or len(password) < 8:
+            raise ValueError("your password should be a combination of 8 or more capital and small alphabet characters"
+                             " and numbers")
         self.__password = password
         # email
         if '@' in email == False:
             raise ValueError("invalid email")
         self.__email = email
         # shomare telephone sabet
-        if num_counter((int(phnum))) != 11 and phnum[0] !='0':
+        if len(phnum) != 11 or phnum[0] !='0':
             raise ValueError("invalid number")
         self.__phnum = phnum
         # shomare mobile
-        if num_counter(int(cellnum)) != 11 and cellnum[0] != '0' and cellnum[1] != '9':
+        if len(cellnum) != 11 or cellnum[0] != '0' or cellnum[1] != '9':
             raise ValueError("invalid number")
         self.__cellnum = cellnum
         # adrese manzel ya mahale kar
@@ -108,48 +107,49 @@ class person:
     @byear.setter
     def byear(self, value):
         self.__byear = value
-    #username
+    # username
     @property
     def username(self):
         return self.__username
     @username.setter
     def username(self, value):
         self.__username = value
-    #password
+    # password
     @property
     def password(self):
         return self.__password
     @password.setter
     def password(self, value):
         self.__password = value
-    #email
+    # email
     @property
     def email(self):
         return self.__email
     @email.setter
     def email(self, value):
         self.__email = value
-    #phnum
+    # phnum
     @property
     def phnum(self):
         return self.__phnum
     @phnum.setter
     def phnum(self, value):
         self.__phnum = value
-    #cellnum
+    # cellnum
     @property
     def cellnum(self):
         return self.__cellnum
     @cellnum.setter
     def cellnum(self, value):
         self.__cellnum = value
-    #address
+    # address
     @property
     def address(self):
         return self.__address
     @address.setter
     def address(self, value):
         self.__address = value
+
         
 class seller(person):
     #Az in class baraye forooshandeh estefade mikonim
