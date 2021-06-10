@@ -334,3 +334,42 @@ class operatur:
         self.__opcell = opcell
 
 
+
+
+
+class karname_mali:
+    #in class baraye estefade dar amar foroshande va amar panel operatur ast
+    def __init__(self , sood , daramad , tedadsefaresh):
+        self.__sood = sood
+        self.__daramad = daramad
+        self.__tedadsefaresh = tedadsefaresh
+
+
+    #setter and getter
+    "sood property"
+    @property
+    def sood(self):
+        return self.__sood
+
+    @sood.setter
+    def sood(self , ksood):
+        self.__sood = ksood
+
+    "daramad property"
+    @property
+    def daramad(self):
+        return self.__daramad
+
+    @daramad.setter
+    def daramad(self , kdaramad):
+        self.__daramad = kdaramad
+
+    "tedadsefaresh property"
+    @property
+    def tsefaresh(self):
+        return self.__tedadsefaresh
+
+    @tsefaresh.setter
+    def tsefaresh(self , ktsefaresh ):
+        self.__tedadsefaresh = ktsefaresh
+
