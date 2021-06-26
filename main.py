@@ -1,7 +1,7 @@
 import datetime
 # baraye zaman va tarikhe daqiq
 today_date = datetime.date.today()
-class person:
+class Person:
     # Az in class baraye taerif forooshande va moshtari estefadeh mikonim
     def __init__(self, fname, lname, gender, ncode, bday, bmonth, byear, username, password, email, phnum, cellnum,
                  address):
@@ -56,7 +56,8 @@ class person:
         self.__cellnum = cellnum
         # adrese manzel ya mahale kar
         self.__address = address
-
+    def birthdate(self):
+        return '{}/{}/{}'.format(self.__bday,self.__bmonth,self.__byear)
     # setters and getters
     # fname
     @property
@@ -150,11 +151,11 @@ class person:
     def address(self, value):
         self.__address = value
 
-class client(person):
+class Client(Person):
     # Az in class baraye moshtari estefadeh mikonim
     def __init__(self, fname, lname, gender, ncode, bday, bmonth, byear, username, password, email, phnum, cellnum,
                  address, id, wallet = 0, fav_list = [], sh_list = [], d_sh_list = []):
-        super(client,self).__init__(fname, lname, gender, ncode, bday, bmonth, byear, username, password, email, phnum,\
+        super(Client, self).__init__(fname, lname, gender, ncode, bday, bmonth, byear, username, password, email, phnum,\
         cellnum, address)
         # id moshtari
         self.__id = 'CU' + id.zfill(6)
@@ -203,6 +204,33 @@ class client(person):
     @d_sh_list.setter
     def d_sh_list(self, value):
         self.__d_sh_list = value
+
+        user_data = {
+            (self.__id +':\n'):
+                {
+                    'first name': self.__fname+ '\n',
+                    'last name': self.__lname + '\n',
+                    'gender': self.__gender + '\n',
+                    'code melli': self.__ncode + '\n',
+                    'birth date': self.birthdate() + '\n',
+                    'username': self.__username + '\n',
+                    'password': self.__password + '\n',
+                    'email': self.__email + '\n',
+                    'phone number': self.__phnum + '\n',
+                    'mobile number': self.__cellnum + '\n',
+                    'address': self.__address + '\n'
+                }
+        }
+
+        file = open(f'Client_Data.txt', 'a+')
+
+        file.write('{')
+        for username, data in user_data.items():
+            file.write('\'' + username + '\':' + str(data) + ',')
+        file.write('}')
+
+        file.close()
+
 
         
 class seller(person):
