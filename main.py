@@ -1,3 +1,4 @@
+import pickle
 import datetime
 # baraye zaman va tarikhe daqiq
 today_date = datetime.date.today()
@@ -232,16 +233,81 @@ class Client(Person):
         file.close()
 
 
-        
-class seller(person):
-    # Az in class baraye forooshandeh estefade mikonim
-    def __init__(self, fname, lname, gender, ncode, bday, bmonth, byear, email, phnum, cellnum, address, id, wallet = None):
-        super(seller, self).__init__(fname, lname, gender, ncode, bday, bmonth, byear, email, phnum, cellnum, address)
-        self.id = id
-        #id forooshandeh
-        self.wallet = wallet
-        # kif pool frooshandeh
+    
+    # Seller's class related:
+    class seller(person):
+    def __init__(self, fname, lname, gender, ncode, bday, bmonth, byear, username, password, email, phnum, cellnum, address, id, wallet = 0):
+        super(seller, self).__init__(fname, lname, gender, ncode, bday, bmonth, byear, username, password, email, phnum, cellnum, address)
 
+        # Seller's ID & Info &... 
+        self.__id = 'SEll' + str(id).zfill(8)
+        self.__verified = False
+        self.__save()
+        
+        def __save(self):
+        with open("SellersID.dat","wb") as dat: 
+            pickle.dump(self, dat)
+
+        # List of Sellers
+          with open("Sellers.txt", "r+") as sl:
+            sellers_list = sl.read()
+            sl.write("\n" + self.__id)
+            
+        # Seller's Ratings
+        self.__rating = []
+        self.__likes = 0
+        self.__dislikes = 0
+
+        # Seller's Wallet (to be able to do money transactions w/out credit card)
+        self.__wallet = wallet
+
+        # Seller's Products List
+        self.__products = []
+
+
+      #Setter&Getter
+            
+    # ID
+    @property
+    def id(self):
+        return self.__id
+    
+    @id.setter
+    def id(self, value):
+        self.__id = value
+        self.__save()
+        
+    # Wallet
+    @property
+    def wallet(self):
+        return self.__wallet
+    @wallet.setter
+    def wallet(self, value):
+        self.__wallet = value
+        self.__save()
+
+    # Products
+    @property
+    def products(self):
+        return self.__products
+    @wallet.setter
+    def products(self, value):
+        self.__products = value
+        self.__save()
+
+    #Rating
+    @property
+    def rating(self):
+        return self.__rating[1]/self.__rating[0]
+
+    @rating.setter
+    def rating(self, value):
+        self.__rating[0] += 1
+        self.__rating[1] += value
+        self.__save()
+
+        
+        
 class kala:
     # in class baraye estefade dar foroshgah va safhe sefareshat ast
     def __init__(self ,kalname ,kalprice ,kalcode , kalline, kalscore, kalstock, comment = []):
