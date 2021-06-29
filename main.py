@@ -222,20 +222,17 @@ class Client(Person):
                     'address': self.__address + '\n'
                 }
         }
-
         file = open(f'Client_Data.txt', 'a+')
-
         file.write('{')
         for username, data in user_data.items():
             file.write('\'' + username + '\':' + str(data) + ',')
         file.write('}')
-
         file.close()
 
 
     
     # Seller's class related:
-    class seller(person):
+class seller(person):
     def __init__(self, fname, lname, gender, ncode, bday, bmonth, byear, username, password, email, phnum, cellnum, address, id, wallet = 0):
         super(seller, self).__init__(fname, lname, gender, ncode, bday, bmonth, byear, username, password, email, phnum, cellnum, address)
 
@@ -386,11 +383,28 @@ class kala:
     @comment.setter
     def comment(self, value):
         self.__comment = value
+        user_data = {
+            (self.__kalcode +':\n'):
+                {
+                    'name': self.__kalname + '\n',
+                    'category': self.__kalline + '\n',
+                    'price': self.__kalprice + '\n',
+                    'stock': self.__kalstock + '\n',
+                    'score': self.__kalscore + '\n'
+                }
+        }
+        file = open(f'Kala_Data.txt', 'a+')
+        file.write('{')
+        for username, data in user_data.items():
+            file.write('\'' + username + '\':' + str(data) + ',')
+        file.write('}')
+        file.close()
+
 
 
 class operatur:
     def __init__(self ,opname , oppass , opcell ):
-        self.__opname = 'op'+str(opname).zfill(6)
+        self.__opname = 'OP' + str(opname).zfill(6)
         # username opratur
         self.__oppass = oppass
         # password operatur
@@ -406,8 +420,6 @@ class operatur:
     @pname.setter
     def pname(self , opname):
         self.opname = opname
-
-
     # oppass
     "oppass property"
     @property
@@ -416,8 +428,6 @@ class operatur:
     @ppass.setter
     def ppass(self , oppass):
         self.__oppass = oppass
-
-
     # opcell
     "opcel property"
     @property
@@ -426,6 +436,19 @@ class operatur:
     @pcell.setter
     def pcell(self , opcell):
         self.__opcell = opcell
+        user_data = {
+            (self.__opname +':\n'):
+                {
+                    'password': self.__oppass + '\n',
+                    'cellphone number': self.__opcell + '\n',
+                }
+        }
+        file = open(f'Operator_Data.txt', 'a+')
+        file.write('{')
+        for username, data in user_data.items():
+            file.write('\'' + username + '\':' + str(data) + ',')
+        file.write('}')
+        file.close()
 
 
 
@@ -437,7 +460,6 @@ class karname_mali:
         self.__sood = sood
         self.__daramad = daramad
         self.__tedadsefaresh = tedadsefaresh
-
 
     #setter and getter
     "sood property"
@@ -466,4 +488,17 @@ class karname_mali:
     @tsefaresh.setter
     def tsefaresh(self , ktsefaresh ):
         self.__tedadsefaresh = ktsefaresh
-
+        user_data = {
+            (self.__id +':\n'):
+                {
+                    'profit': self.__sood + '\n',
+                    'income': self.__daramad + '\n',
+                    'order_number': self.__tedadsefaresh + '\n'
+                }
+        }
+        file = open(f'karname_mali_Data.txt', 'a+')
+        file.write('{')
+        for username, data in user_data.items():
+            file.write('\'' + username + '\':' + str(data) + ',')
+        file.write('}')
+        file.close()
